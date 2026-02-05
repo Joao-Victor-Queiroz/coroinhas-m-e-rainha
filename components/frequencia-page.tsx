@@ -12,7 +12,7 @@ type Props = {
     data: Coroinha[]
 }
 
-type FrequenciaPost = Omit<Frequencia, 'uuid'>;
+type FrequenciaPost = Omit<Frequencia, 'id'>;
 
 
 export function FrequenciaForm({data} : Props) {
@@ -49,7 +49,7 @@ export function FrequenciaForm({data} : Props) {
                 }
                 return frequencia;
             })
-        ))
+      ))
     }
 
     const handleSubmit = async(event: React.SyntheticEvent) => {

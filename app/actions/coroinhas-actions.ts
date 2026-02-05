@@ -58,7 +58,7 @@ export async function frequenciaPorCoroinha(coroinha_uuid: string){
     return data;
 }
 
-export async function registrarFrequencia(frequencias: Omit<Frequencia, 'uuid'>[]){
+export async function registrarFrequencia(frequencias: Omit<Frequencia, 'id'>[]){
     const { error } = await supabase.from('frequencia_coroinhas').insert(frequencias);
 
     if(error){
