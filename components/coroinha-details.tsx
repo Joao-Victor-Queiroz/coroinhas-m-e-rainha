@@ -1,10 +1,9 @@
 import { Frequencia } from "./coroinhas-page";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
-import Link from "next/link"; // Importação necessária para navegação
-import { Button } from "@/components/ui/button"; // Ajuste o caminho conforme seu projeto
-import { ChevronLeft } from "lucide-react"; // Opcional: ícone para o botão
-
+import Link from "next/link"; 
+import { Button } from "@/components/ui/button"; 
+import { ChevronLeft } from "lucide-react"; 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }

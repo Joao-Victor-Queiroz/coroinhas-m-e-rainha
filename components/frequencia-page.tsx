@@ -7,6 +7,8 @@ import {Button} from "./ui/button"
 import {Input} from "./ui/input"
 import {registrarFrequencia} from "@/app/actions/coroinhas-actions"
 import {useState, useEffect} from "react"
+import Link from "next/link"; 
+import { ChevronLeft } from "lucide-react"; 
 
 type Props = {
     data: Coroinha[]
@@ -70,7 +72,16 @@ export function FrequenciaForm({data} : Props) {
     return(
         <form onSubmit={handleSubmit} className="max-w-4xl mx-auto p-6">
             <h1 className="font-bold text-xl md:text-2xl">Registrar Frequência</h1>
-            <div>
+             <div className="w-full flex justify-start my-6">
+                    <Button variant="ghost" asChild className="pl-1">
+                      <Link href="/" className="flex items-center gap-2">
+                        <ChevronLeft className="h-4 w-4" />
+                        Voltar para o Início
+                      </Link>
+                    </Button>
+                  </div>
+            
+            <div className="mt-4 max-w-full">
                 <label htmlFor="data_registro" className="block font-medium mb-2">Data de Registro</label>
                 <Input 
                     type="date"
