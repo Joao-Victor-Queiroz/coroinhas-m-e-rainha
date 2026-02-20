@@ -16,12 +16,39 @@ export async function adicionarCoroinha(formData: FormData){
         nome_coroinha: nome_coroinha
     })
 
+    
+
     if(error){
-        throw new Error(error.message)
-      
+      return {success: false, message: error.message}
     }
 
     revalidatePath('/')
+    return {success: true, message: 'Coroinha adicionado com sucesso!'}
+
+}
+
+export async function editarCoroinha(id: string, formData: FormData){
+    const nome_coroinha = formData.get('nome_coroinha') as string;
+    console.log('Valor recebido para edição: ', nome_coroinha)
+    const {error} = await supabase.from('coroinhas').update({
+        nome_coroinha: nome_coroinha
+    }).eq('id', id)
+
+    if(error){
+        return {success: false, message: error.message}
+    }
+    revalidatePath('/')
+    return {success: true, message: "Coroinha editado com sucesso!"}
+}
+
+export async function excluirCoroinha(id: string){
+    const {error} = await supabase.from('coroinhas').delete().eq('id', id)
+
+    if(error){
+       return {success: false, message: error.message}
+    }
+
+    return {success: true, message: 'Coroinha excluído com sucesso!'}
 }
 
 export async function listarCoroinhas(){
@@ -40,7 +67,7 @@ export async function coroinhaPorId(id: string){
     const {data, error} = await supabase.from('coroinhas').select('*').eq('id', id).single();
 
     if(error){
-        throw new Error(error.message);
+        return {success: false, message: error.message}
     }
 
     console.log(data)
@@ -62,8 +89,8 @@ export async function registrarFrequencia(frequencias: Omit<Frequencia, 'id'>[])
     const { error } = await supabase.from('frequencia_coroinhas').insert(frequencias);
 
     if(error){
-        throw new Error(error.message)
+        return {success: false, messaege: error.message}
     }
 
-    console.log('Frequências registradas: ', frequencias)
+    return {success: true, message: 'Frequências registradas com sucesso!'}
 }

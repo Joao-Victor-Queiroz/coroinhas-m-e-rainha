@@ -1,9 +1,13 @@
-"use cache"
+
 import { CoroinhasList } from "@/components/coroinhas-page";
-import { listarCoroinhas } from "../app/actions/coroinhas-actions";
+import CoroinhasListSkeleton from "@/components/ui/coroinhas-list-skeleton";
+import { Suspense } from "react";
+
 
 export default async function CoroinhasPage(){
-    const coroinhas = await listarCoroinhas();
-
-    return <CoroinhasList data={coroinhas}/>
+   
+    return (
+    <Suspense fallback={<CoroinhasListSkeleton/>}>
+        <CoroinhasList/>
+    </Suspense>)
 }

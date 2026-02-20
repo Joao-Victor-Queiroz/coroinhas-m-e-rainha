@@ -1,6 +1,6 @@
 
 import { Geist } from "next/font/google";
-
+import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 
 // const defaultUrl = process.env.VERCEL_URL
@@ -28,6 +28,7 @@ export default function RootLayout({
     <html lang="pt-BR" suppressHydrationWarning>
       <body className={`${geistSans.className} antialiased`}>
           {children}
+          <Toaster />
       </body>
     </html>
   );
