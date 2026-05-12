@@ -1,109 +1,83 @@
-<a href="https://demo-nextjs-with-supabase.vercel.app/">
-  <img alt="Next.js and Supabase Starter Kit - the fastest way to build apps with Next.js and Supabase" src="https://demo-nextjs-with-supabase.vercel.app/opengraph-image.png">
-  <h1 align="center">Next.js and Supabase Starter Kit</h1>
-</a>
+<h1 align="center">🕊️ Coroinhas-MR (Gerenciador de Coroinhas)</h1>
 
 <p align="center">
- The fastest way to build apps with Next.js and Supabase
+  Uma aplicação web desenvolvida para facilitar o registro e o acompanhamento da frequência de coroinhas em formação.
 </p>
 
 <p align="center">
-  <a href="#features"><strong>Features</strong></a> ·
-  <a href="#demo"><strong>Demo</strong></a> ·
-  <a href="#deploy-to-vercel"><strong>Deploy to Vercel</strong></a> ·
-  <a href="#clone-and-run-locally"><strong>Clone and run locally</strong></a> ·
-  <a href="#feedback-and-issues"><strong>Feedback and issues</strong></a>
-  <a href="#more-supabase-examples"><strong>More Examples</strong></a>
+  <img src="https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js" alt="Next.js" />
+  <img src="https://img.shields.io/badge/React-19-blue?style=for-the-badge&logo=react" alt="React" />
+  <img src="https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white" alt="Supabase" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
+  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
 </p>
-<br/>
 
-## Features
+## 📌 Sobre o Projeto
 
-- Works across the entire [Next.js](https://nextjs.org) stack
-  - App Router
-  - Pages Router
-  - Proxy
-  - Client
-  - Server
-  - It just works!
-- supabase-ssr. A package to configure Supabase Auth to use cookies
-- Password-based authentication block installed via the [Supabase UI Library](https://supabase.com/ui/docs/nextjs/password-based-auth)
-- Styling with [Tailwind CSS](https://tailwindcss.com)
-- Components with [shadcn/ui](https://ui.shadcn.com/)
-- Optional deployment with [Supabase Vercel Integration and Vercel deploy](#deploy-your-own)
-  - Environment variables automatically assigned to Vercel project
+O **Coroinhas-MR** nasceu da necessidade de modernizar e simplificar a gestão de coroinhas (servidores do altar) em fase de formação. Antes gerenciado de forma exaustiva através de planilhas complexas, agora o processo conta com um sistema dedicado, rápido e de fácil consulta.
 
-## Demo
+O principal objetivo é proporcionar uma interface amigável para registrar novos coroinhas e acompanhar detalhadamente suas frequências nos encontros e atividades, substituindo controles manuais por uma solução automatizada e segura.
 
-You can view a fully working demo at [demo-nextjs-with-supabase.vercel.app](https://demo-nextjs-with-supabase.vercel.app/).
+## ✨ Funcionalidades
 
-## Deploy to Vercel
+- **Cadastro de Coroinhas:** Registro detalhado com informações pessoais e de contato.
+- **Controle de Frequência:** Marcação de presença/falta de forma ágil para cada encontro ou formação.
+- **Consulta Rápida:** Visualização clara do histórico e status de cada participante.
+- **Interface Intuitiva:** Design focado na experiência do usuário para facilitar a adoção por qualquer pessoa, independente de conhecimento técnico.
 
-Vercel deployment will guide you through creating a Supabase account and project.
+## 🚀 Tecnologias e Arquitetura
 
-After installation of the Supabase integration, all relevant environment variables will be assigned to the project so the deployment is fully functioning.
+Este projeto foi construído utilizando as ferramentas mais modernas do ecossistema web, focado em performance, tipagem estática e simplicidade arquitetural:
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fwith-supabase&project-name=nextjs-with-supabase&repository-name=nextjs-with-supabase&demo-title=nextjs-with-supabase&demo-description=This+starter+configures+Supabase+Auth+to+use+cookies%2C+making+the+user%27s+session+available+throughout+the+entire+Next.js+app+-+Client+Components%2C+Server+Components%2C+Route+Handlers%2C+Server+Actions+and+Middleware.&demo-url=https%3A%2F%2Fdemo-nextjs-with-supabase.vercel.app%2F&external-id=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fwith-supabase&demo-image=https%3A%2F%2Fdemo-nextjs-with-supabase.vercel.app%2Fopengraph-image.png)
+- **[Next.js 15 (App Router)](https://nextjs.org/):** Framework React utilizado para construção da interface e lógica de servidor.
+- **[Supabase](https://supabase.com/):** Utilizado como banco de dados (PostgreSQL) e provedor de autenticação.
+- **Arquitetura Integrada (Sem API Externa):** Graças aos *Server Components* e *Server Actions* do Next.js, as chamadas ao banco de dados (Supabase) são feitas diretamente na camada servidora do Next.js. Isso dispensou a necessidade de criar e manter uma API externa separada, reduzindo a complexidade e acelerando o desenvolvimento.
+- **[Tailwind CSS](https://tailwindcss.com/):** Para estilização rápida, responsiva e consistente.
+- **[shadcn/ui](https://ui.shadcn.com/) & [Radix UI](https://www.radix-ui.com/):** Componentes de interface acessíveis e customizáveis.
+- **[TypeScript](https://www.typescriptlang.org/):** Garantindo segurança e previsibilidade no código através da tipagem estática.
 
-The above will also clone the Starter kit to your GitHub, you can clone that locally and develop locally.
+## 🛠️ Decisões de Engenharia
 
-If you wish to just develop locally and not deploy to Vercel, [follow the steps below](#clone-and-run-locally).
+1. **Server-first:** Identificar uma dor (uso exaustivo de planilhas) e propor uma solução de software completa.
+2. **Performance no Client:** Toda a lógica de filtragem e busca de coroinhas é processada no lado do cliente, aproveitando o baixo volume de dados inicial para entregar uma experiência de busca instantânea.
+3. **Boas práticas de UI/UX:** A escolha do shadcn/ui não foi apenas estética; utilizei a biblioteca para garantir que componentes complexos (como modais de frequência e formulários de cadastro) sigam padrões de acessibilidade (WAI-ARIA).
+4. **Gestão de Banco de Dados e BaaS:** Integração direta com um banco relacional (PostgreSQL via Supabase), lidando com modelagem de dados para cadastros e relacionamentos de frequência.
 
-## Clone and run locally
+## 💻 Como rodar o projeto localmente
 
-1. You'll first need a Supabase project which can be made [via the Supabase dashboard](https://database.new)
+Siga os passos abaixo para testar a aplicação na sua máquina:
 
-2. Create a Next.js app using the Supabase Starter template npx command
+### 1. Pré-requisitos
+- [Node.js](https://nodejs.org/en/) (versão 18+ recomendada)
+- Gerenciador de pacotes (npm, yarn, pnpm ou bun)
+- Uma conta no [Supabase](https://supabase.com/) (para o banco de dados)
 
-   ```bash
-   npx create-next-app --example with-supabase with-supabase-app
-   ```
+### 2. Clonando o repositório
+```bash
+git clone https://github.com/Joao-Victor-Queiroz/coroinhas-m-e-rainha.git
+cd coroinhas-mr
+```
 
-   ```bash
-   yarn create next-app --example with-supabase with-supabase-app
-   ```
+### 3. Configurando as Variáveis de Ambiente
+Crie um arquivo `.env.local` na raiz do projeto e preencha com as suas credenciais do Supabase:
 
-   ```bash
-   pnpm create next-app --example with-supabase with-supabase-app
-   ```
+```env
+NEXT_PUBLIC_SUPABASE_URL=sua_url_do_supabase
+NEXT_PUBLIC_SUPABASE_ANON_KEY=sua_anon_key_do_supabase
+```
 
-3. Use `cd` to change into the app's directory
+### 4. Instalando dependências e iniciando
+```bash
+# Instale as dependências
+npm install
 
-   ```bash
-   cd with-supabase-app
-   ```
+# Inicie o servidor de desenvolvimento
+npm run dev
+```
 
-4. Rename `.env.example` to `.env.local` and update the following:
+Acesse [http://localhost:3000](http://localhost:3000) no seu navegador para ver o resultado.
 
-  ```env
-  NEXT_PUBLIC_SUPABASE_URL=[INSERT SUPABASE PROJECT URL]
-  NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=[INSERT SUPABASE PROJECT API PUBLISHABLE OR ANON KEY]
-  ```
-  > [!NOTE]
-  > This example uses `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`, which refers to Supabase's new **publishable** key format.
-  > Both legacy **anon** keys and new **publishable** keys can be used with this variable name during the transition period. Supabase's dashboard may show `NEXT_PUBLIC_SUPABASE_ANON_KEY`; its value can be used in this example.
-  > See the [full announcement](https://github.com/orgs/supabase/discussions/29260) for more information.
 
-  Both `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` can be found in [your Supabase project's API settings](https://supabase.com/dashboard/project/_?showConnect=true)
+## 👨‍💻 Autor
 
-5. You can now run the Next.js local development server:
-
-   ```bash
-   npm run dev
-   ```
-
-   The starter kit should now be running on [localhost:3000](http://localhost:3000/).
-
-6. This template comes with the default shadcn/ui style initialized. If you instead want other ui.shadcn styles, delete `components.json` and [re-install shadcn/ui](https://ui.shadcn.com/docs/installation/next)
-
-> Check out [the docs for Local Development](https://supabase.com/docs/guides/getting-started/local-development) to also run Supabase locally.
-
-## Feedback and issues
-
-Please file feedback and issues over on the [Supabase GitHub org](https://github.com/supabase/supabase/issues/new/choose).
-
-## More Supabase examples
-
-- [Next.js Subscription Payments Starter](https://github.com/vercel/nextjs-subscription-payments)
-- [Cookie-based Auth and the Next.js 13 App Router (free course)](https://youtube.com/playlist?list=PL5S4mPUpp4OtMhpnp93EFSo42iQ40XjbF)
-- [Supabase Auth and the Next.js App Router](https://github.com/supabase/supabase/tree/master/examples/auth/nextjs)
+Desenvolvido por **João Victor Queiroz** - [GitHub](https://github.com/Joao-Victor-Queiroz)

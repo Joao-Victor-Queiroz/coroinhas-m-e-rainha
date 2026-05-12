@@ -10,8 +10,6 @@ export async function adicionarCoroinha(formData: FormData){
 
     const nome_coroinha = formData.get('nome_coroinha') as string;
 
-    console.log('Valor recebido: ', nome_coroinha)
-
     const {error} = await supabase.from('coroinhas').insert({
         nome_coroinha: nome_coroinha
     })
@@ -29,7 +27,7 @@ export async function adicionarCoroinha(formData: FormData){
 
 export async function editarCoroinha(id: string, formData: FormData){
     const nome_coroinha = formData.get('nome_coroinha') as string;
-    console.log('Valor recebido para edição: ', nome_coroinha)
+    
     const {error} = await supabase.from('coroinhas').update({
         nome_coroinha: nome_coroinha
     }).eq('id', id)
@@ -58,7 +56,6 @@ export async function listarCoroinhas(){
     throw new Error(error.message);
    }
 
-   console.log('Dados recebidos: ', data)
 
    return data ?? []
 }
@@ -81,7 +78,6 @@ export async function frequenciaPorCoroinha(coroinha_uuid: string){
         throw new Error(error.message);
     }
 
-    console.log("Frequências recebidas: ", data);
     return data;
 }
 
